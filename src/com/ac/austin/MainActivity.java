@@ -15,50 +15,41 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
-	public void switchChar(String symbol, String message){
-		HashMap hm =new HashMap();
-		hm.put(".-", "A");
-		hm.put("-...", "B");
-		hm.put("-.-.", "C");
-		hm.put("-..", "D");
-		hm.put(".", "E");
-		hm.put("..-.", "F");
-		hm.put("--.", "G");
-		hm.put("....", "H");
-		hm.put("..", "I");
-		hm.put(".---", "J");
-		hm.put("-.-", "K");
-		hm.put(".-..", "L");
-		hm.put("--", "M");
-		hm.put("-.", "N");
-		hm.put("---", "O");
-		hm.put(".--.", "P");
-		hm.put("--.-", "Q");
-		hm.put(".-.", "R");
-		hm.put("...", "S");
-		hm.put("-", "T");
-		hm.put("..-", "U");
-		hm.put("...-", "V");
-		hm.put(".--", "W");
-		hm.put("-..-", "X");
-		hm.put("-.--", "Y");
-		hm.put("--..", "Z");
-		Iterator iter = hm.entrySet().iterator();
-		while (iter.hasNext()) {
-			Map.Entry mEntry = (Map.Entry) iter.next();
-			if(mEntry.getKey()==symbol){
-				message+=mEntry.getValue();
-				//System.out.println(mEntry.getValue());
-			}
-		}
-		
+	public String switchChar(String symbol){
+		String message=null;
+		if(symbol.equals(".-"))message="A";
+		else if(symbol.equals("-..."))message="B";
+		else if(symbol.equals("-.-."))message="C";
+		else if(symbol.equals("-.."))message="D";
+		else if(symbol.equals("."))message="E";
+		else if(symbol.equals("..-."))message="F";
+		else if(symbol.equals("--.-"))message="G";
+		else if(symbol.equals("...."))message="H";
+		else if(symbol.equals(".."))message="I";
+		else if(symbol.equals(".---"))message="J";
+		else if(symbol.equals("-.-"))message="K";
+		else if(symbol.equals(".-.."))message="L";
+		else if(symbol.equals("--"))message="M";
+		else if(symbol.equals("-."))message="N";
+		else if(symbol.equals("---"))message="O";
+		else if(symbol.equals(".--."))message="P";
+		else if(symbol.equals("--.-"))message="Q";
+		else if(symbol.equals(".-."))message="R";
+		else if(symbol.equals("..."))message="S";
+		else if(symbol.equals("-"))message="T";
+		else if(symbol.equals("..-"))message="U";
+		else if(symbol.equals("...-"))message="V";
+		else if(symbol.equals(".--"))message="W";
+		else if(symbol.equals("-..-"))message="X";
+		else if(symbol.equals("-.--"))message="Y";
+		else if(symbol.equals("--.."))message="Z";	
+		return message;
 	}
 	public String decodeMorse(String message){
-		//System.out.println("Hello");
 		String[]words=message.split(" ");
-		String decoded=null;
+		String decoded="";
 		for(String word:words){
-			switchChar(word,decoded);
+			decoded+=switchChar(word);
 		}
 		return decoded;
 				
@@ -68,6 +59,7 @@ public class MainActivity extends Activity {
 		EditText editText = (EditText) findViewById(R.id.edit_message);
 		String message = editText.getText().toString();
 		intent.putExtra(EXTRA_MESSAGE, decodeMorse(message));
+		System.out.println(message);
 		startActivity(intent);
 		//do shit
 	}
