@@ -1,12 +1,14 @@
 package com.ac.austin;
 
 import java.util.*;
+import java.io.*;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.content.Intent;
 import android.widget.EditText;
+import android.content.res.AssetManager;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
@@ -54,11 +56,74 @@ public class MainActivity extends Activity {
 		return decoded;
 				
 	}
+	/*public void openFile(String textFileName){
+		Scanner fileReader;
+		try{
+			fileReader=new Scanner (new File(textFileName));
+		}
+		catch(Exception e){
+			System.out.println("could not open");
+		}
+	}*/
+	public String switchChar(char symbol){
+		String line;
+		int asciiCount=65;
+		try{
+			AssetManager am = getAssets();
+			InputStream inputStream = am.open("morsesource.txt");
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			BufferedReader fileReader = new BufferedReader(inputStreamReader);
+			for(asciiCount=65;asciiCount<90;asciiCount++){
+				line=fileReader.readLine();
+				if(symbol==(char)(asciiCount) || symbol==(char)(asciiCount+32)){
+					fileReader.close();
+					return line+=" ";
+				}
+			}
+		}
+		catch(Exception e){
+			System.out.println("could not open");
+			return "B";
+		}
+		return "C";
+				
+		
+		
+		
+		/*reader=new Scanner(new File("morsesource.txt"));
+			/*int asciiCount;
+			BufferedReader reader = new BufferedReader(new FileReader("morsesource.txt"));
+			String line = "";
+			for(asciiCount=65;asciiCount<133;asciiCount++){
+					line=reader.readLine();
+					if(symbol==asciiCount || symbol==asciiCount+32) return line;
+			}
+		}
+		catch(Exception e){
+			return "1";
+		}
+		return "3";
+		*/
+		
+		
+	}
+	public String encodeMorse(String message){
+		String output="";
+		String[]words=message.split(" ");
+		for(String word:words){
+			char[] characters=word.toCharArray();
+			for (char character:characters){
+				output+=switchChar(character);
+			}
+			output+=" ";
+		}
+		return output;
+	}
 	public void sendMessage(View view){
 		Intent intent=new Intent (this, DisplayMessageActivity.class);
 		EditText editText = (EditText) findViewById(R.id.edit_message);
 		String message = editText.getText().toString();
-		intent.putExtra(EXTRA_MESSAGE, decodeMorse(message));
+		intent.putExtra(EXTRA_MESSAGE, encodeMorse(message));
 		System.out.println(message);
 		startActivity(intent);
 		//do shit
