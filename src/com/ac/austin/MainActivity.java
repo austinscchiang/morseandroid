@@ -17,8 +17,33 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
-	public String switchChar(String symbol){
-		String message=null;
+	public char switchDecodeChar(String symbol){
+		String line;
+		int asciiCount;
+		try{
+			AssetManager am = getAssets();
+			InputStream inputStream = am.open("morsesource.txt");
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			BufferedReader fileReader = new BufferedReader(inputStreamReader);
+			for(asciiCount=65;asciiCount<90;asciiCount++){
+				line=fileReader.readLine();
+				if(symbol.equals(line)){
+					fileReader.close();
+					return(char)asciiCount;
+				}
+				else if(symbol.equals("/")){
+					return ' ';
+				}
+			}
+		}
+		catch(Exception e){
+			System.out.println("could not open");
+			return '<';
+		}
+		return '?';
+		
+		
+		/*
 		if(symbol.equals(".-"))message="A";
 		else if(symbol.equals("-..."))message="B";
 		else if(symbol.equals("-.-."))message="C";
@@ -46,12 +71,13 @@ public class MainActivity extends Activity {
 		else if(symbol.equals("-.--"))message="Y";
 		else if(symbol.equals("--.."))message="Z";	
 		return message;
+		*/
 	}
 	public String decodeMorse(String message){
 		String[]words=message.split(" ");
 		String decoded="";
 		for(String word:words){
-			decoded+=switchChar(word);
+			decoded+=switchDecodeChar(word);
 		}
 		return decoded;
 				
@@ -65,7 +91,7 @@ public class MainActivity extends Activity {
 			System.out.println("could not open");
 		}
 	}*/
-	public String switchChar(char symbol){
+	public String switchEncodeChar(char symbol){
 		String line;
 		int asciiCount=65;
 		try{
@@ -93,7 +119,7 @@ public class MainActivity extends Activity {
 		for(String word:words){
 			char[] characters=word.toCharArray();
 			for (char character:characters){
-				output+=switchChar(character);
+				output+=switchEncodeChar(character);
 			}
 			output+=" ";
 		}
@@ -103,11 +129,11 @@ public class MainActivity extends Activity {
 		Intent intent=new Intent (this, DisplayMessageActivity.class);
 		EditText editText = (EditText) findViewById(R.id.edit_message);
 		String message = editText.getText().toString();
-		intent.putExtra(EXTRA_MESSAGE, encodeMorse(message));
+//		intent.putExtra(EXTRA_MESSAGE, decodeMorse(message));
 		System.out.println(message);
 		//startActivity(intent);
 		EditText output = (EditText)findViewById(R.id.editText1);
-		output.setText(encodeMorse(message));
+		output.setText(decodeMorse(message));
 		output.setVisibility(View.VISIBLE);
 		//do shit
 	}
