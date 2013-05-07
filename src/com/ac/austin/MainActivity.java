@@ -86,26 +86,6 @@ public class MainActivity extends Activity {
 			return "B";
 		}
 		return "C";
-				
-		
-		
-		
-		/*reader=new Scanner(new File("morsesource.txt"));
-			/*int asciiCount;
-			BufferedReader reader = new BufferedReader(new FileReader("morsesource.txt"));
-			String line = "";
-			for(asciiCount=65;asciiCount<133;asciiCount++){
-					line=reader.readLine();
-					if(symbol==asciiCount || symbol==asciiCount+32) return line;
-			}
-		}
-		catch(Exception e){
-			return "1";
-		}
-		return "3";
-		*/
-		
-		
 	}
 	public String encodeMorse(String message){
 		String output="";
@@ -125,7 +105,10 @@ public class MainActivity extends Activity {
 		String message = editText.getText().toString();
 		intent.putExtra(EXTRA_MESSAGE, encodeMorse(message));
 		System.out.println(message);
-		startActivity(intent);
+		//startActivity(intent);
+		EditText output = (EditText)findViewById(R.id.editText1);
+		output.setText(encodeMorse(message));
+		output.setVisibility(View.VISIBLE);
 		//do shit
 	}
 	@Override
