@@ -10,15 +10,17 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="286dp"
+        android:id="@+id/encodeButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="modeSelect"
         android:text="Encode" />
 
     <Button
-        android:id="@+id/Button01"
-        android:layout_width="286dp"
+        android:id="@+id/decodeButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="modeSelect"
         android:text="Decode" />
 
     <LinearLayout
