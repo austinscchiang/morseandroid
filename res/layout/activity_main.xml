@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="modeSelect"
-        android:text="Decode" />
+        android:text="Decooding" />
 
     <LinearLayout
         android:id="@+id/boxone"
