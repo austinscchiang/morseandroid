@@ -47,7 +47,7 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2.65"
+        android:layout_weight="2.60"
         android:ems="20"
         android:visibility="gone" >
 
