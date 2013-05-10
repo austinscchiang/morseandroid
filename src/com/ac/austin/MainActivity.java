@@ -52,15 +52,6 @@ public class MainActivity extends Activity {
 		return decoded;
 				
 	}
-	/*public void openFile(String textFileName){
-		Scanner fileReader;
-		try{
-			fileReader=new Scanner (new File(textFileName));
-		}
-		catch(Exception e){
-			System.out.println("could not open");
-		}
-	}*/
 	private String switchEncodeChar(char symbol){
 		String line;
 		int asciiCount=65;
@@ -97,11 +88,15 @@ public class MainActivity extends Activity {
 	}
 	
 	public void modeSelect(View view){
+		EditText promptMessage=(EditText)findViewById(R.id.edit_message);
 		if (view==findViewById(R.id.encodeButton)){
 			MODE="ENCODE";
+			promptMessage.setHint("Enter Morse Code");			
 		}else if (view==findViewById(R.id.decodeButton)){
 			MODE="DECODE";
+			promptMessage.setHint("Enter Text");
 		}
+		promptMessage.setText(null);
 	}
 	
 	public void sendMessage(View view){
