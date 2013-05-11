@@ -7,5 +7,6 @@
     <string name="button_send">Send</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="hello_world">Hello World</string>
+    <string name="button_copy">Copy</string>
 
 </resources>

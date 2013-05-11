@@ -9,6 +9,8 @@ import android.view.View;
 import android.content.Intent;
 import android.widget.EditText;
 import android.content.res.AssetManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
@@ -26,13 +28,13 @@ public class MainActivity extends Activity {
 			InputStream inputStream = am.open("morsesource.txt");
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader fileReader = new BufferedReader(inputStreamReader);
-			for(asciiCount=65;asciiCount<90;asciiCount++){
+			for(asciiCount=65;asciiCount<91 ;asciiCount++){
 				line=fileReader.readLine();
 				if(symbol.equals(line)){
 					fileReader.close();
 					return(char)asciiCount;
 				}
-				else if(symbol.equals("/")){
+				else if(symbol.equals("/")||symbol.equals("\n")){
 					return ' ';
 				}
 			}
@@ -60,7 +62,7 @@ public class MainActivity extends Activity {
 			InputStream inputStream = am.open("morsesource.txt");
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader fileReader = new BufferedReader(inputStreamReader);
-			for(asciiCount=65;asciiCount<90;asciiCount++){
+			for(asciiCount=65;asciiCount<91;asciiCount++){
 				line=fileReader.readLine();
 				if(symbol==(char)(asciiCount) || symbol==(char)(asciiCount+32)){
 					fileReader.close();
@@ -82,7 +84,7 @@ public class MainActivity extends Activity {
 			for (char character:characters){
 				output+=switchEncodeChar(character);
 			}
-			output+=" ";
+			output+="/ ";
 		}
 		return output;
 	}
@@ -98,6 +100,12 @@ public class MainActivity extends Activity {
 		}
 		promptMessage.setText(null);
 	}
+	public void copyMessage(View view){
+		EditText copyString= (EditText)findViewById(R.id.outputText);
+		ClipboardManager clipBoard = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+		ClipData clip = ClipData.newPlainText("Copied", copyString.getText());
+		clipBoard.setPrimaryClip(clip);
+	}
 	
 	public void sendMessage(View view){
 //		Intent intent=new Intent (this, DisplayMessageActivity.class);
@@ -105,7 +113,7 @@ public class MainActivity extends Activity {
 		String message = editText.getText().toString();
 		System.out.println(message);
 		//startActivity(intent);
-		EditText output = (EditText)findViewById(R.id.editText1);
+		EditText output = (EditText)findViewById(R.id.outputText);
 		if(MODE.equals("ENCODE")){
 			output.setText(decodeMorse(message));
 		}else if (MODE.equals("DECODE")){

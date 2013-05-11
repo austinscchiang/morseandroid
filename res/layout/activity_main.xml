@@ -20,8 +20,9 @@
         android:id="@+id/decodeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:onClick="modeSelect"
-        android:text="Decooding" />
+        android:text="Decoding" />
 
     <LinearLayout
         android:id="@+id/boxone"
@@ -42,16 +43,25 @@
             android:onClick="sendMessage"
             android:text="@string/button_send" />
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/editText1"
+	<LinearLayout
+        android:id="@+id/boxtwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2.60"
-        android:ems="20"
-        android:visibility="gone" >
+        android:orientation="horizontal" >
 
-        <requestFocus />
-    </EditText>
+        <EditText
+        android:id="@+id/outputText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="40" />
+
+        <Button
+        	android:id="@+id/copyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="copyMessage"
+            android:text="@string/button_copy" />
+    </LinearLayout>
 
 </LinearLayout>
