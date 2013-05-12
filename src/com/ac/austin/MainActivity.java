@@ -20,6 +20,22 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
+	private boolean asciiRange(int asciiNum){
+		if (asciiNum>47 && asciiNum<60) return true; //number
+		else if (asciiNum>64 && asciiNum<91) return true; //alphabet
+		else if (asciiNum>96 && asciiNum<123) return true; //alphabet
+		switch (asciiNum){
+		case 39: return true;
+		case 44: return true;
+		case 45: return true;
+		case 46: return true;
+		case 47: return true;
+		case 63: return true;
+		case 95: return true;
+		}
+		return false;
+		
+	}
 	private char switchDecodeChar(String symbol){
 		String line;
 		int asciiCount;
@@ -28,7 +44,20 @@ public class MainActivity extends Activity {
 			InputStream inputStream = am.open("morsesource.txt");
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader fileReader = new BufferedReader(inputStreamReader);
-			for(asciiCount=65;asciiCount<91 ;asciiCount++){
+			for(asciiCount=0;asciiCount<96; asciiCount++){
+				//if(asciiCount == 12) return '\n';
+				if(asciiRange(asciiCount)){
+					line=fileReader.readLine();
+					if(symbol.equals(line)){
+						fileReader.close();
+						return(char)asciiCount;
+					}
+					
+				}else if(symbol.equals("/")||symbol.equals("\n")){
+					return ' ';
+				}
+			}/*
+			for(asciiCount=48;asciiCount<48; asciiCount++){
 				line=fileReader.readLine();
 				if(symbol.equals(line)){
 					fileReader.close();
@@ -38,6 +67,16 @@ public class MainActivity extends Activity {
 					return ' ';
 				}
 			}
+			for(asciiCount=65;asciiCount<91 ;asciiCount++){
+				line=fileReader.readLine();
+				if(symbol.equals(line)){
+					fileReader.close();
+					return(char)asciiCount;
+				}
+				else if(symbol.equals("/")||symbol.equals("\n")){
+					return ' ';
+				}
+			}*/
 		}
 		catch(Exception e){
 			System.out.println("could not open");
@@ -62,11 +101,15 @@ public class MainActivity extends Activity {
 			InputStream inputStream = am.open("morsesource.txt");
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader fileReader = new BufferedReader(inputStreamReader);
-			for(asciiCount=65;asciiCount<91;asciiCount++){
-				line=fileReader.readLine();
-				if(symbol==(char)(asciiCount) || symbol==(char)(asciiCount+32)){
-					fileReader.close();
-					return line+=" ";
+			for(asciiCount=0;asciiCount<123; asciiCount++){
+//				if(asciiCount == 12) return "\n";
+				if(asciiRange(asciiCount)){
+					line=fileReader.readLine();
+					if(symbol==(char)(asciiCount)){
+						fileReader.close();
+						return line+=" ";
+					}
+					
 				}
 			}
 		}
