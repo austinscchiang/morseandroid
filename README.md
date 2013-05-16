@@ -1,5 +1,3 @@
 morseandroid
 ============
-
-Morse Code translator Android app hi there
-whats up
+Simple Morse Code translator Android application, written by Austin Chiang
