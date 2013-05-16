@@ -76,8 +76,7 @@ public class MainActivity extends Activity {
 		for(String word:words){
 			decoded+=switchDecodeChar(word);
 		}
-		return decoded;
-				
+		return decoded;				
 	}
 	private String switchEncodeChar(char symbol){
 		String line;
@@ -88,7 +87,6 @@ public class MainActivity extends Activity {
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader fileReader = new BufferedReader(inputStreamReader);
 			for(asciiCount=0;asciiCount<123; asciiCount++){
-//				if(asciiCount == 12) return "\n";
 				if(asciiRange(asciiCount)){
 					line=fileReader.readLine();
 					if(symbol==(char)(asciiCount)){
@@ -156,7 +154,6 @@ public class MainActivity extends Activity {
 	}
 	
 	public void sendMessage(View view){
-//		Intent intent=new Intent (this, DisplayMessageActivity.class);
 		EditText editText = (EditText) findViewById(R.id.edit_message);
 		String message = editText.getText().toString();
 		System.out.println(message);
@@ -171,7 +168,6 @@ public class MainActivity extends Activity {
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
