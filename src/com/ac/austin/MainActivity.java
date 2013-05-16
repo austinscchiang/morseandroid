@@ -1,24 +1,30 @@
 package com.ac.austin;
 
-import java.util.*;
-import java.io.*;
-import android.os.Bundle;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import android.app.Activity;
-import android.view.Menu;
-import android.view.View;
-import android.content.Intent;
-import android.widget.EditText;
-import android.content.res.AssetManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.res.AssetManager;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	public static String MODE = "ENCODE";
+	//public final ToggleButton buttonPressed=(ToggleButton)findViewById(R.id.encodeButton);
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ToggleButton buttonPressed=(ToggleButton)findViewById(R.id.encodeButton);
+		buttonPressed.setChecked(true);
 	}
 	private boolean asciiRange(int asciiNum){
 		if (asciiNum>47 && asciiNum<60) return true; //number
@@ -56,27 +62,7 @@ public class MainActivity extends Activity {
 				}else if(symbol.equals("/")||symbol.equals("\n")){
 					return ' ';
 				}
-			}/*
-			for(asciiCount=48;asciiCount<48; asciiCount++){
-				line=fileReader.readLine();
-				if(symbol.equals(line)){
-					fileReader.close();
-					return(char)asciiCount;
-				}
-				else if(symbol.equals("/")||symbol.equals("\n")){
-					return ' ';
-				}
 			}
-			for(asciiCount=65;asciiCount<91 ;asciiCount++){
-				line=fileReader.readLine();
-				if(symbol.equals(line)){
-					fileReader.close();
-					return(char)asciiCount;
-				}
-				else if(symbol.equals("/")||symbol.equals("\n")){
-					return ' ';
-				}
-			}*/
 		}
 		catch(Exception e){
 			System.out.println("could not open");
@@ -121,28 +107,47 @@ public class MainActivity extends Activity {
 	}
 	private String encodeMorse(String message){
 		String output="";
-		String[]words=message.split(" ");
-		for(String word:words){
-			char[] characters=word.toCharArray();
-			for (char character:characters){
-				output+=switchEncodeChar(character);
+		String[]paragraphs=message.split("\n");
+		for (String paragraph:paragraphs){
+			String[]words=paragraph.split(" ");
+			for(String word:words){
+				char[] characters=word.toCharArray();
+				for (char character:characters){
+					output+=switchEncodeChar(character);
+				}
+				output+="/ ";
 			}
-			output+="/ ";
+			output=output.substring(0,output.length()-2);
+			output+="\n";
 		}
+		output=output.substring(0,output.length()-1);
 		return output;
 	}
-	
+	private void toggleButtonPressed(View view){
+		ToggleButton buttonPressed=(ToggleButton)view;
+		ToggleButton buttonNotPressed=null;
+		if (buttonPressed==findViewById(R.id.encodeButton)){
+				buttonNotPressed=(ToggleButton)findViewById(R.id.decodeButton);
+		}else{
+				buttonNotPressed=(ToggleButton)findViewById(R.id.encodeButton);
+		}
+		boolean temp=buttonPressed.isChecked();
+		buttonPressed.setChecked(temp);
+		buttonNotPressed.setChecked(!temp);
+	}
 	public void modeSelect(View view){
 		EditText promptMessage=(EditText)findViewById(R.id.edit_message);
+		toggleButtonPressed(view);
 		if (view==findViewById(R.id.encodeButton)){
 			MODE="ENCODE";
-			promptMessage.setHint("Enter Morse Code");			
+			promptMessage.setHint("Enter Text");			
 		}else if (view==findViewById(R.id.decodeButton)){
 			MODE="DECODE";
-			promptMessage.setHint("Enter Text");
+			promptMessage.setHint("Enter Morse Code");
 		}
 		promptMessage.setText(null);
 	}
+	
 	public void copyMessage(View view){
 		EditText copyString= (EditText)findViewById(R.id.outputText);
 		ClipboardManager clipBoard = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
@@ -158,9 +163,9 @@ public class MainActivity extends Activity {
 		//startActivity(intent);
 		EditText output = (EditText)findViewById(R.id.outputText);
 		if(MODE.equals("ENCODE")){
-			output.setText(decodeMorse(message));
-		}else if (MODE.equals("DECODE")){
 			output.setText(encodeMorse(message));
+		}else if (MODE.equals("DECODE")){
+			output.setText(decodeMorse(message));
 		}
 		output.setVisibility(View.VISIBLE);
 	}

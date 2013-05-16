@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Morsecodeaustin</string>
+    <string name="app_name">Morse Code Translator</string>
     <string name="action_settings">Settings</string>
-    <string name="edit_message">Enter Morse Code</string>
+    <string name="edit_message">Enter Text</string>
     <string name="button_send">Send</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="hello_world">Hello World</string>

@@ -9,6 +9,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+    <ToggleButton
+        android:id="@+id/encodeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:onClick="modeSelect"
+        android:textOn="Encoding"
+        android:textOff="Encoding" />
+
+    <ToggleButton
+        android:id="@+id/decodeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:onClick="modeSelect"
+        android:textOn="Decoding"
+        android:textOff="Decoding" />
+	<!--  
     <Button
         android:id="@+id/encodeButton"
         android:layout_width="match_parent"
@@ -23,7 +41,7 @@
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:onClick="modeSelect"
         android:text="Decoding" />
-
+-->
     <LinearLayout
         android:id="@+id/boxone"
         android:layout_width="match_parent"
