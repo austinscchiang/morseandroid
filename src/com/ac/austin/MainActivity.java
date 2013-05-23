@@ -3,6 +3,7 @@ package com.ac.austin;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.*;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -17,7 +18,8 @@ import android.widget.ToggleButton;
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	public static String MODE = "ENCODE";
-	//public final ToggleButton buttonPressed=(ToggleButton)findViewById(R.id.encodeButton);
+	public static HashMap hm = new HashMap();
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,23 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		ToggleButton buttonPressed=(ToggleButton)findViewById(R.id.encodeButton);
 		buttonPressed.setChecked(true);
+	}
+	private void setHash(HashMap hm, String fileName){
+		int asciiCount;
+		try{
+			AssetManager am = getAssets();
+			InputStream inputStream = am.open("morsesource.txt");
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			BufferedReader fileReader = new BufferedReader(inputStreamReader);
+			for(asciiCount=0;asciiCount<96; asciiCount++){
+				if(asciiRange(asciiCount)){
+					hm.put((char)asciiCount, fileReader.readLine());
+				}
+			}
+		}
+		catch(Exception e){
+			System.out.println("could not open");
+		}
 	}
 	private boolean asciiRange(int asciiNum){
 		if (asciiNum>47 && asciiNum<60) return true; //number
