@@ -18,8 +18,8 @@ import android.widget.ToggleButton;
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	public static String MODE = "ENCODE";
-	public static HashMap hm = new HashMap();
-	
+	public static HashMap <Character, String> charToMorseMap = new HashMap<Character, String>();
+	public static HashMap <String, Character> morseToCharMap = new HashMap<String, Character>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,27 @@ public class MainActivity extends Activity {
 		ToggleButton buttonPressed=(ToggleButton)findViewById(R.id.encodeButton);
 		buttonPressed.setChecked(true);
 	}
+	
+	
+	private boolean asciiRange(int asciiNum){
+		if (asciiNum>47 && asciiNum<60) return true; //number
+		else if (asciiNum>64 && asciiNum<91) return true; //alphabet
+		else if (asciiNum>96 && asciiNum<123) return true; //alphabet
+		switch (asciiNum){
+		case 39: return true;
+		case 44: return true;
+		case 45: return true;
+		case 46: return true;
+		case 47: return true;
+		case 63: return true;
+		case 95: return true;
+		}
+		return false;
+		
+	}
+	
+	
+	
 	private void setHash(HashMap hm, String fileName){
 		int asciiCount;
 		try{
@@ -45,22 +66,7 @@ public class MainActivity extends Activity {
 			System.out.println("could not open");
 		}
 	}
-	private boolean asciiRange(int asciiNum){
-		if (asciiNum>47 && asciiNum<60) return true; //number
-		else if (asciiNum>64 && asciiNum<91) return true; //alphabet
-		else if (asciiNum>96 && asciiNum<123) return true; //alphabet
-		switch (asciiNum){
-		case 39: return true;
-		case 44: return true;
-		case 45: return true;
-		case 46: return true;
-		case 47: return true;
-		case 63: return true;
-		case 95: return true;
-		}
-		return false;
-		
-	}
+	
 	private char switchDecodeChar(String symbol){
 		String line;
 		int asciiCount;
@@ -70,7 +76,6 @@ public class MainActivity extends Activity {
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader fileReader = new BufferedReader(inputStreamReader);
 			for(asciiCount=0;asciiCount<96; asciiCount++){
-				//if(asciiCount == 12) return '\n';
 				if(asciiRange(asciiCount)){
 					line=fileReader.readLine();
 					if(symbol.equals(line)){
@@ -89,6 +94,7 @@ public class MainActivity extends Activity {
 		}
 		return '?';
 	}
+	
 	private String decodeMorse(String message){
 		String[]words=message.split(" ");
 		String decoded="";
@@ -97,6 +103,11 @@ public class MainActivity extends Activity {
 		}
 		return decoded;				
 	}
+	
+	
+	
+	
+	
 	private String switchEncodeChar(char symbol){
 		String line;
 		int asciiCount=65;
@@ -109,7 +120,7 @@ public class MainActivity extends Activity {
 				if(asciiRange(asciiCount)){
 					line=fileReader.readLine();
 					if(symbol==(char)(asciiCount)){
-						fileReader.close();
+										fileReader.close();
 						return line+=" ";
 					}
 					
@@ -122,6 +133,8 @@ public class MainActivity extends Activity {
 		}
 		return "C";
 	}
+	
+	
 	private String encodeMorse(String message){
 		String output="";
 		String[]paragraphs=message.split("\n");
@@ -140,6 +153,8 @@ public class MainActivity extends Activity {
 		output=output.substring(0,output.length()-1);
 		return output;
 	}
+	
+	
 	private void toggleButtonPressed(View view){
 		ToggleButton buttonPressed=(ToggleButton)view;
 		ToggleButton buttonNotPressed=null;
@@ -152,6 +167,8 @@ public class MainActivity extends Activity {
 		buttonPressed.setChecked(temp);
 		buttonNotPressed.setChecked(!temp);
 	}
+	
+	
 	public void modeSelect(View view){
 		EditText promptMessage=(EditText)findViewById(R.id.edit_message);
 		toggleButtonPressed(view);
