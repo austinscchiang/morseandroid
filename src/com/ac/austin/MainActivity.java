@@ -222,9 +222,8 @@ public class MainActivity extends Activity {
 		}else{
 				buttonNotPressed=(ToggleButton)findViewById(R.id.encodeButton);
 		}
-		boolean temp=buttonPressed.isChecked();
-		buttonPressed.setChecked(temp);
-		buttonNotPressed.setChecked(!temp);
+        buttonPressed.setChecked(true);
+        buttonNotPressed.setChecked(false);
 	}
 	
 	

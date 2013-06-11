@@ -8,17 +8,16 @@
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="110dp"
+        android:layout_width="140dp"
         android:layout_height="130dp"
         android:src="@drawable/mcticon2"
-        android:layout_marginTop="110dp"
-        android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_marginTop="150dp"/>
     <ImageView
             android:id="@+id/logoText"
             android:layout_width="280dp"
-            android:layout_height="130dp"
+            android:layout_height="50dp"
             android:src="@drawable/logo_text"
-            android:layout_marginTop="0dp" android:layout_below="@+id/logoImage"
+            android:layout_marginTop="20dp" android:layout_below="@+id/logoImage"
             android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

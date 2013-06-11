@@ -38,27 +38,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67f65232-1dc1-46af-a70e-4c2c557a3ab7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/activity_display_message.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/ac/austin/DisplayMessageActivity.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/MainActivity.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Morsecodeaustin.apk" afterPath="$PROJECT_DIR$/bin/Morsecodeaustin.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$id.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$layout.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$menu.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$string.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$style.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ac/austin/SplashScreen.class" afterPath="$PROJECT_DIR$/bin/classes/com/ac/austin/SplashScreen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/android-support-v4.jar" afterPath="$PROJECT_DIR$/libs/android-support-v4.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes.dex" afterPath="$PROJECT_DIR$/bin/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/resources.ap_" afterPath="$PROJECT_DIR$/bin/resources.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/ac/austin/R.java" afterPath="$PROJECT_DIR$/gen/com/ac/austin/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ac/austin/SplashScreen.java" afterPath="$PROJECT_DIR$/src/com/ac/austin/SplashScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/morsesource.txt" afterPath="$PROJECT_DIR$/assets/morsesource.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/splash_screen.xml" afterPath="$PROJECT_DIR$/res/layout/splash_screen.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Morsecodeaustin.iws" />
@@ -67,12 +50,12 @@
     <file path="$USER_HOME$/Downloads/NavigationDrawer/AndroidManifest.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370727960484" ignored="false" />
     <file path="/fragment.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370728429152" ignored="false" />
     <file path="/strings.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370834725232" ignored="false" />
-    <file path="/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370896050151" ignored="false" />
+    <file path="/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370980687959" ignored="false" />
     <file path="/activity_main2.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370834340637" ignored="false" />
     <file path="$USER_HOME$/Downloads/NavigationDrawer/src/com/example/android/navigationdrawerexample/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370822633902" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370896979295" ignored="false" />
-    <file path="/splash_screen.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370885890472" ignored="false" />
-    <file path="/activity_main.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370972433035" ignored="false" />
+    <file path="/splash_screen.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370975955284" ignored="false" />
+    <file path="/activity_main.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370982129569" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,12 +116,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ac/austin/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="69" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.67164177">
+            <state line="22" column="46" selection-start="717" selection-end="717" vertical-scroll-proportion="-13.2">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1819#1842#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,11 +130,12 @@
       <file leaf-file-name="activity_main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="39" selection-start="2996" selection-end="2996" vertical-scroll-proportion="-20.7">
+            <state line="83" column="34" selection-start="3430" selection-end="3430" vertical-scroll-proportion="-4.6666665">
               <folding>
                 <element signature="e#2224#2246#0" expanded="true" />
                 <element signature="e#2467#2488#0" expanded="true" />
-                <element signature="e#3263#3284#0" expanded="true" />
+                <element signature="e#3307#3328#0" expanded="true" />
+                <marker date="1370982160857" expanded="true" signature="3430:3767" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -163,7 +147,7 @@
       <file leaf-file-name="splash_screen.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/splash_screen.xml">
           <provider editor-type-id="text-editor">
-            <state line="20" column="39" selection-start="837" selection-end="837" vertical-scroll-proportion="-12.0">
+            <state line="13" column="113" selection-start="601" selection-end="601" vertical-scroll-proportion="-7.8">
               <folding />
             </state>
           </provider>
@@ -181,10 +165,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="28" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+            <state line="4" column="30" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0955414">
               <folding />
             </state>
           </provider>
@@ -215,12 +199,12 @@
       <list>
         <option value="$PROJECT_DIR$/res/layout/activity_main2.xml" />
         <option value="$PROJECT_DIR$/assets/morsesource.txt" />
-        <option value="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/layout/splash_screen.xml" />
-        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/test.xml" />
+        <option value="$PROJECT_DIR$/res/layout/splash_screen.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -500,35 +484,35 @@
       <workItem from="1370876111403" duration="4359000" />
       <workItem from="1370885262447" duration="8933000" />
       <workItem from="1370900902800" duration="610000" />
-      <workItem from="1370969805661" duration="5398000" />
+      <workItem from="1370969805661" duration="10440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33187000" />
+    <option name="totallyTimeSpent" value="38229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.03962391" sideWeight="0.8639366" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24647415" sideWeight="0.8639366" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.03883495" sideWeight="0.8536932" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24549237" sideWeight="0.8536932" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975152" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13606341" sideWeight="0.5144392" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13606341" sideWeight="0.5171256" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2372159" sideWeight="0.488178" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2372159" sideWeight="0.4867872" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49405548" sideWeight="0.6252518" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1618536" sideWeight="0.8639366" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13606341" sideWeight="0.48488918" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1618536" sideWeight="0.8639366" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13606341" sideWeight="0.48220283" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -609,7 +593,8 @@
           <folding>
             <element signature="e#2224#2246#0" expanded="true" />
             <element signature="e#2467#2488#0" expanded="true" />
-            <element signature="e#3263#3284#0" expanded="true" />
+            <element signature="e#3307#3328#0" expanded="true" />
+            <marker date="1370982160857" expanded="true" signature="3430:3767" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -642,7 +627,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="117" column="4" selection-start="3306" selection-end="3306" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1819#1842#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -651,7 +636,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="48" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1819#1842#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -660,7 +645,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="48" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1819#1842#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -669,7 +654,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="13" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1819#1842#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -677,13 +662,6 @@
     <entry file="file://$PROJECT_DIR$/assets/morsesource.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="5" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="28" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
@@ -695,7 +673,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/splash_screen.xml">
       <provider editor-type-id="text-editor">
-        <state line="20" column="39" selection-start="837" selection-end="837" vertical-scroll-proportion="-12.0">
+        <state line="13" column="113" selection-start="601" selection-end="601" vertical-scroll-proportion="-7.8">
           <folding />
         </state>
       </provider>
@@ -703,13 +681,23 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="46" selection-start="717" selection-end="717" vertical-scroll-proportion="-13.2">
+          <folding>
+            <element signature="e#1819#1842#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="39" selection-start="2996" selection-end="2996" vertical-scroll-proportion="-20.7">
+        <state line="83" column="34" selection-start="3430" selection-end="3430" vertical-scroll-proportion="-4.6666665">
           <folding>
             <element signature="e#2224#2246#0" expanded="true" />
             <element signature="e#2467#2488#0" expanded="true" />
-            <element signature="e#3263#3284#0" expanded="true" />
+            <element signature="e#3307#3328#0" expanded="true" />
+            <marker date="1370982160857" expanded="true" signature="3430:3767" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -717,12 +705,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="69" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.67164177">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="4" column="30" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0955414">
+          <folding />
         </state>
       </provider>
     </entry>
