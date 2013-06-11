@@ -3,14 +3,22 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/splash_gradient">
 
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="110dp"
         android:layout_height="130dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/mcticon2" />
+        android:src="@drawable/mcticon2"
+        android:layout_marginTop="110dp"
+        android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+    <ImageView
+            android:id="@+id/logoText"
+            android:layout_width="280dp"
+            android:layout_height="130dp"
+            android:src="@drawable/logo_text"
+            android:layout_marginTop="0dp" android:layout_below="@+id/logoImage"
+            android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

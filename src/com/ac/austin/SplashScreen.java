@@ -29,7 +29,6 @@ public class SplashScreen extends Activity{
         }, SPLASH_DISPLAY_LENGTH);
 		new Handler().postDelayed(new Runnable(){
 			public void run(){}
-			
 		}, SPLASH_DISPLAY_LENGTH);
 	}
 	
