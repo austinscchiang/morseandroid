@@ -5,22 +5,29 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.ActionBar.TabListener;
+import android.app.*;
 import android.app.FragmentTransaction;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.pm.PackageManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.AutoFocusCallback;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.support.v4.app.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.method.ScrollingMovementMethod;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -29,26 +36,68 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnCompletionListener{
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     private DrawerLayout mDrawerLayout;
     private TextView mDrawerText;
     private ActionBarDrawerToggle mDrawerToggle;
-    private ImageButton soundButton;
     private ViewPager mViewPager;
 
 
 
-    public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+
+    MediaPlayer beep_long;
+    MediaPlayer beep_short;
+    MediaPlayer delay;
+//    MediaPlayer beep_short = MediaPlayer.create(this, R.raw.short_beep);
+//    MediaPlayer delay = MediaPlayer.create(this, R.raw.delay);
+
+
+    Camera camera;
+
+
+
+
     public static String MODE = "ENCODE";
     public static HashMap <Character, String> charToMorse = new HashMap<Character, String>();
     public static HashMap <String, Character> morseToChar = new HashMap<String, Character>();
 
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        if (camera != null) {
+            camera.stopPreview();
+            camera.release();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        beep_long = MediaPlayer.create(MainActivity.this, R.raw.long_beep);
+        beep_short = MediaPlayer.create(MainActivity.this, R.raw.short_beep);
+        delay = MediaPlayer.create(MainActivity.this, R.raw.delay);
+
+
+        //snippet for flashlight
+        Context context = this;
+        PackageManager pm = context.getPackageManager();
+
+        // if device support camera?
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            Log.e("err", "Device has no camera!");
+            Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Light!", Toast.LENGTH_SHORT);
+            errorToast.show();
+            return;
+        }
+
+
+
+
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
@@ -60,40 +109,39 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // parent.
         actionBar.setHomeButtonEnabled(false);
         // Specify that tabs should be displayed in the action bar.
+
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+
+//        DrawerStuffs
+//        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+//        mDrawerText = (TextView) findViewById(R.id.left_drawer);
+//        mDrawerText.setText(R.string.drawer_content);
+//        mDrawerText.setTextColor(Color.WHITE);
+//        mDrawerText.setTextSize(20);
+//        mDrawerText.setMovementMethod(new ScrollingMovementMethod());
+//        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+//                R.drawable.mcticon, R.string.drawer_open, R.string.drawer_close) {
+//
+//            /** Called when a drawer has settled in a completely closed state. */
+//            public void onDrawerClosed(View view) {
+//                getActionBar().setTitle("Morse Code Translator");
+//                invalidateOptionsMenu();
+//            }
+//
+//            /** Called when a drawer has settled in a completely open state. */
+//            public void onDrawerOpened(View drawerView) {
+//                getActionBar().setTitle("Morse Code Conversion Sheet");
+//                invalidateOptionsMenu();
+//            }
+//        };
+
+//        // Set the drawer toggle as the DrawerListener
+//        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         // Set up the ViewPager, attaching the adapter and setting up a listener for when the
         // user swipes between sections.
-        ToggleButton buttonPressed=(ToggleButton)findViewById(R.id.encodeButton);
-        soundButton=(ImageButton)findViewById(R.id.soundButton);
-        buttonPressed.setChecked(true);
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        mDrawerText = (TextView) findViewById(R.id.left_drawer);
-        mDrawerText.setText(R.string.drawer_content);
-        mDrawerText.setTextColor(Color.WHITE);
-        mDrawerText.setTextSize(20);
-        mDrawerText.setMovementMethod(new ScrollingMovementMethod());
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.mcticon, R.string.drawer_open, R.string.drawer_close) {
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                getActionBar().setTitle("Morse Code Translator");
-                invalidateOptionsMenu();
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle("Morse Code Conversion Sheet");
-                invalidateOptionsMenu();
-            }
-        };
-
-        // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
 
@@ -113,7 +161,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         actionBar.addTab(actionBar.newTab().setText("Flashlight").setTabListener(this));
     }
 
-    // Create a tab listener that is calle
     // Create a tab listener that is called when the user changes tabs.d when the user changes tabs.
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
@@ -123,11 +170,33 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in the ViewPager.
         mViewPager.setCurrentItem(tab.getPosition());
+
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
+
+    @Override
+    public void onCompletion(MediaPlayer mp){
+        mp.start();
+
+    }
+
+    //more drawer stuff
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.main, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        // If the nav drawer is open, hide action items related to the content view
+//        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerText);
+//        return super.onPrepareOptionsMenu(menu);
+//    }
 
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -142,14 +211,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
                     return new LaunchpadSectionFragment();
+                case 1:
+                    // The first section of the app is the most interesting -- it offers
+                    // a launchpad into the other demonstrations in this example application.
+                    return new AudioSectionFragment();
 
                 default:
-                    // The other sections of the app are dummy placeholders.
-                    Fragment fragment = new DummySectionFragment();
-                    Bundle args = new Bundle();
-                    args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-                    fragment.setArguments(args);
-                    return fragment;
+                    return new LightSectionFragment();
             }
         }
 
@@ -158,71 +226,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             return 3;
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return "Section " + (position + 1);
-        }
-    }
-    /**
-     * A fragment that launches other parts of the demo application.
-     */
-    public static class LaunchpadSectionFragment extends Fragment {
-        //IMPLEMENT THIS SHIT
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_section_launchpad, container, false);
-
-            // Demonstration of a collection-browsing activity.
-            rootView.findViewById(R.id.demo_collection_button)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), com.ac.austin.CollectionDemoActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-
-            // Demonstration of navigating to external activities.
-            rootView.findViewById(R.id.demo_external_activity)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            // Create an intent that asks the user to pick a photo, but using
-                            // FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET, ensures that relaunching
-                            // the application from the device home screen does not return
-                            // to the external activity.
-                            Intent externalActivityIntent = new Intent(Intent.ACTION_PICK);
-                            externalActivityIntent.setType("image/*");
-                            externalActivityIntent.addFlags(
-                                    Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-                            startActivity(externalActivityIntent);
-                        }
-                    });
-
-            return rootView;
-        }
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerText);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-
-
-
-
+    /**morse code functions**/
     private boolean asciiRange(int asciiNum){
         if (asciiNum>47 && asciiNum<60) return true; //number
         else if (asciiNum>64 && asciiNum<91) return true; //alphabet
@@ -346,9 +353,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
         }
     }
-
-
-    private void toggleButtonPressed(View view){
+    public void toggleButtonPressed(View view){
         ToggleButton buttonPressed=(ToggleButton)view;
         ToggleButton buttonNotPressed=null;
         if (buttonPressed==findViewById(R.id.encodeButton)){
@@ -382,6 +387,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     public void sendMessage(View view){
+
         setHash(morseToChar, charToMorse);
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String message = editText.getText().toString();
@@ -397,6 +403,174 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
         output.setVisibility(View.VISIBLE);
     }
+
+
+    public void playAudio(String message){
+
+        try{
+            char[] characters=message.toCharArray();
+            for (char character:characters){
+                if(character=='.'){
+                    beep_short.start();
+
+                }else if(character=='-'){
+                    beep_long.start();
+
+                }else{
+                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+                    errorToast.show();
+                }
+//                Thread.sleep(500);
+            }
+            //play delay
+
+        }catch(Exception e){
+            Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Audio!", Toast.LENGTH_SHORT);
+            errorToast.show();
+        }
+    }
+
+    public void sendAudioMessage(View view){
+        setHash(morseToChar, charToMorse);
+        EditText editText = (EditText) findViewById(R.id.edit_message_audio);
+        String message = editText.getText().toString();
+        System.out.println(message);
+        InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
+        //startActivity(intent);
+        String encoded=encodeMorse(message, charToMorse);
+        try{
+            String[]words=encoded.split(" ");
+            for(String word:words){
+                playAudio(word);
+                //play delay
+            }
+        }catch(Exception e){
+            Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
+            errorToast.show();
+        }
+    }
+
+    public void flashON(){
+        camera = Camera.open();
+        Parameters p = camera.getParameters();
+        p.setFlashMode(Parameters.FLASH_MODE_TORCH);
+        camera.setParameters(p);
+        camera.startPreview();
+
+    }
+
+    public void flashOFF(){
+        camera.stopPreview();
+        camera.release();
+    }
+    public void flashChar(boolean length){
+
+            flashON();
+            try {
+                if(length==true)  Thread.sleep(100);
+                else   Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        flashOFF();
+    }
+
+    public void stringToLight(String message){
+
+        try{
+            char[] characters=message.toCharArray();
+            for (char character:characters){
+                if(character=='.'){
+                    flashChar(true);
+
+                }else if(character=='-'){
+                    flashChar(false);
+
+                }else{
+                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+                    errorToast.show();
+                }
+                Thread.sleep(250);
+            }
+            //play delay
+
+        }catch(Exception e){
+            Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Light!", Toast.LENGTH_SHORT);
+            errorToast.show();
+            flashOFF();
+        }
+    }
+
+    public void sendLightMessage(View view){
+        setHash(morseToChar, charToMorse);
+        EditText editText = (EditText) findViewById(R.id.edit_message_light);
+        String message = editText.getText().toString();
+        System.out.println(message);
+        InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
+        //startActivity(intent);
+        String encoded=encodeMorse(message, charToMorse);
+        try{
+            String[]words=encoded.split(" ");
+            for(String word:words){
+                stringToLight(word);
+                Thread.sleep(400);
+
+                //play delay
+            }
+        }catch(Exception e){
+            Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
+            errorToast.show();
+        }
+    }
+    //End of onCreate
+
+
+
+
+
+
+    /**
+     * A fragment that launches other parts of the demo application.
+     */
+    public static class LaunchpadSectionFragment extends Fragment {
+        //IMPLEMENT THIS SHIT
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_section_launchpad, container, false);
+            ToggleButton buttonPressed=(ToggleButton)rootView.findViewById(R.id.encodeButton);
+            buttonPressed.setChecked(true);
+            return rootView;
+        }
+
+
+
+
+
+    }
+    public static class AudioSectionFragment extends Fragment{
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_section_audio, container, false);
+            return rootView;
+        }
+
+    }
+
+    public static class LightSectionFragment extends Fragment{
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_section_light, container, false);
+
+            return rootView;
+        }
+
+    }
+
 
 
 

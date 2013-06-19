@@ -8,7 +8,10 @@
     <string name="title_activity_display_message">My Message</string>
     <string name="hello_world">Hello World</string>
     <string name="button_copy">Copy</string>
+    <string name="button_audio">Audio</string>
     <string name="drawer_open">Open Cheatsheet</string>
     <string name="drawer_close">Close Cheatsheet</string>
     <string name="drawer_content">This is the conversion chart for morse code!\n\t\t\tA\t\t\t\t\t\t.-\n\t\t\tB\t\t\t\t\t\t-...\n\t\t\tC\t\t\t\t\t\t-.-.\n\t\t\tD\t\t\t\t\t\t-..\n\t\t\tE\t\t\t\t\t\t.\n\t\t\tF\t\t\t\t\t\t..-.\n\t\t\tG\t\t\t\t\t\t--.\n\t\t\tH\t\t\t\t\t\t....\n\t\t\tI\t\t\t\t\t\t\t..\n\t\t\tJ\t\t\t\t\t\t.---\n\t\t\tK\t\t\t\t\t\t-.-\n\t\t\tL\t\t\t\t\t\t.-..\n\t\t\tM\t\t\t\t\t\t--\n\t\t\tN\t\t\t\t\t\t-.\n\t\t\tO\t\t\t\t\t\t---\n\t\t\tP\t\t\t\t\t\t.--.\n\t\t\tQ\t\t\t\t\t\t--.-\n\t\t\tR\t\t\t\t\t\t.-.\n\t\t\tS\t\t\t\t\t\t...\n\t\t\tT\t\t\t\t\t\t-\n\t\t\tU\t\t\t\t\t\t..-\n\t\t\tV\t\t\t\t\t\t...-\n\t\t\tW\t\t\t\t\t\t.--\n\t\t\tX\t\t\t\t\t\t-..-\n\t\t\tY\t\t\t\t\t\t-.--\n\t\t\tZ\t\t\t\t\t\t--..\n\t\t\t1\t\t\t\t\t\t.----\n\t\t\t2\t\t\t\t\t\t..---\n\t\t\t3\t\t\t\t\t\t...--\n\t\t\t4\t\t\t\t\t\t....-\n\t\t\t5\t\t\t\t\t\t.....\n\t\t\t6\t\t\t\t\t\t-....\n\t\t\t7\t\t\t\t\t\t--...\n\t\t\t8\t\t\t\t\t\t---..\n\t\t\t9\t\t\t\t\t\t----.\n\t\t\t0\t\t\t\t\t\t-----\n\t\t\t_\t\t\t\t\t\t\t..--.-\n\t\t\t,\t\t\t\t\t\t\t--..--\n\t\t\t-\t\t\t\t\t\t\t.-.-.-\n\t\t\t.\t\t\t\t\t\t\t-....-\n\t\t\t/\t\t\t\t\t\t\t-..-.\n\t\t\t:\t\t\t\t\t\t\t---...\n\t\t\t;\t\t\t\t\t\t\t-.-.-\n\t\t\t?\t\t\t\t\t\t\t..--..\n\t\t\t</string>
+    <string name="permlab_flashlight">Allows access to flashlight on Phone</string>
+    <string name="permdesc_flashlight">Allows the application to access permission to turn on and off the flashlight on Phone</string>
 </resources>
