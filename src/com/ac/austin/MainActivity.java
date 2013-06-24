@@ -17,9 +17,13 @@ import android.graphics.Color;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.AutoFocusCallback;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.*;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -42,13 +46,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     private TextView mDrawerText;
     private ActionBarDrawerToggle mDrawerToggle;
     private ViewPager mViewPager;
+    public String message_delay;
+    public char character_delay;
+    public Handler mHandler=new Handler();
+    boolean played=false;
+    int delay=0;
+//    private SoundPool beep_long;
+//    private SoundPool beep_short;
+//    private SoundPool beep_delay;
+//    private int soundID_long;
+//    private int soundID_short;
+//
+//    private int soundID_delay;
+//    boolean loaded=false;
+//    private float volume =1;
+
 
 
 
 
     MediaPlayer beep_long;
     MediaPlayer beep_short;
-    MediaPlayer delay;
+    MediaPlayer beep_delay;
 //    MediaPlayer beep_short = MediaPlayer.create(this, R.raw.short_beep);
 //    MediaPlayer delay = MediaPlayer.create(this, R.raw.delay);
 
@@ -77,10 +96,51 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //snippet for soundpool
 
+//        Set the hardware buttons to control the music
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        // Load the sound
+//        beep_long = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+//        beep_long.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+//            @Override
+//            public void onLoadComplete(SoundPool soundPool, int sampleId,
+//                                       int status) {
+//                loaded = true;
+//                Log.e("initial", "loaded");
+//            }
+//        });
+//        beep_short = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+//        beep_short.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+//            @Override
+//            public void onLoadComplete(SoundPool soundPool, int sampleId,
+//                                       int status) {
+//                loaded = true;
+//                Log.e("initial", "loaded");
+//            }
+//        });
+//        beep_delay = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+//        beep_delay.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+//            @Override
+//            public void onLoadComplete(SoundPool soundPool, int sampleId,
+//                                       int status) {
+//                loaded = true;
+//                Log.e("initial", "loaded");
+//            }
+//        });
+//
+//        soundID_long = beep_long.load(this, R.raw.long_beep, 1);
+//        soundID_short = beep_short.load(this, R.raw.short_beep, 1);
+//        soundID_delay = beep_delay.load(this, R.raw.delay, 1);
+
+
+
+
+
+         //snippet for mediaplayer
         beep_long = MediaPlayer.create(MainActivity.this, R.raw.long_beep);
         beep_short = MediaPlayer.create(MainActivity.this, R.raw.short_beep);
-        delay = MediaPlayer.create(MainActivity.this, R.raw.delay);
+        beep_delay = MediaPlayer.create(MainActivity.this, R.raw.delay);
 
 
         //snippet for flashlight
@@ -171,6 +231,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // When the given tab is selected, switch to the corresponding page in the ViewPager.
         mViewPager.setCurrentItem(tab.getPosition());
 
+
     }
 
     @Override
@@ -179,7 +240,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onCompletion(MediaPlayer mp){
-        mp.start();
+
+
 
     }
 
@@ -403,53 +465,176 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
         output.setVisibility(View.VISIBLE);
     }
+    //audio function
 
+//    public void setAudioVolume(){
+//        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+//        float actualVolume = (float) audioManager
+//                .getStreamVolume(AudioManager.STREAM_MUSIC);
+//        float maxVolume = (float) audioManager
+//                .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//        volume = actualVolume / maxVolume;
+//        Log.e("Volume", ""+volume);
+//    }
+//    public void playAudio(SoundPool sp, int id){
+//            sp.play(id, volume, volume, 1, 0, 1f);
+//            Log.e("Test", "Played sound "+id);
+//
+//
+//    }
 
-    public void playAudio(String message){
+    int playAudioMessage(final String message){
+        final int[] delay_counter = new int[1];
+        Runnable r=new Runnable(){
+            int delay=0;
+            @Override
+            public void run(){
+                try{
+                    delay_counter[0]=0;
+                    int count=0;
+                    char[] characters=message.toCharArray();
+                        for (char character:characters){
+                            count++;
+                        if(character=='.'){
+                            delay=beep_short.getDuration()+250;
+                            beep_short.start();
+            //                                  playAudio(beep_short, soundID_short);
 
-        try{
-            char[] characters=message.toCharArray();
-            for (char character:characters){
-                if(character=='.'){
-                    beep_short.start();
+                        }else if(character=='-'){
+                                    delay=beep_long.getDuration()+250;
+                                    beep_long.start();
+            //                                playAudio(beep_long, soundID_long);
 
-                }else if(character=='-'){
-                    beep_long.start();
-
-                }else{
-                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+                        }else if(character=='/'){
+                            delay=beep_delay.getDuration()+250;
+                            beep_delay.start();
+            //                                playAudio(beep_delay, soundID_delay);
+                        }else{
+                            Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+                            errorToast.show();
+                        }
+                        Thread.sleep(delay);
+                        delay_counter[0]+=delay-250;
+                        Log.e("delay"+message+count, ""+delay_counter[0]);
+                    }
+                }catch(Exception e){
+                    Toast errorToast = Toast.makeText(getApplicationContext(), "goofed", Toast.LENGTH_SHORT);
                     errorToast.show();
-                }
-//                Thread.sleep(500);
-            }
-            //play delay
 
+                }
+            }
+        };
+        Thread mThread=new Thread(r);
+        mThread.start();
+        try{
+            mThread.join();
         }catch(Exception e){
-            Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Audio!", Toast.LENGTH_SHORT);
+            Toast errorToast = Toast.makeText(getApplicationContext(), "can't join Thread", Toast.LENGTH_SHORT);
             errorToast.show();
+
         }
+
+        return delay_counter[0];
     }
+//        try{
+//            final Runnable mRunnable=new Runnable(){
+//                public void run(){
+//
+//                }
+//            };
+//            if (count<=message.length()){
+//                final char character=message.charAt(count);
+//                Handler handler=new Handler();
+//                handler.postDelayed(new Runnable(){
+//                    int length;
+//                    int delay=0;
+//                    @Override
+//                    public void run() {
+//                        if(played)
+//
+//                        if(character=='.'){
+//                            delay=beep_short.getDuration()+250;
+//                            beep_short.start();
+//    //                                  playAudio(beep_short, soundID_short);
+//
+//                        }else if(character=='-'){
+//                            delay=beep_long.getDuration()+250;
+//                            beep_long.start();
+//    //                                playAudio(beep_long, soundID_long);
+//
+//                        }else if(character=='/'){
+//                            delay=beep_delay.getDuration()+250;
+//                            beep_delay.start();
+//    //                                playAudio(beep_delay, soundID_delay);
+//                        }
+//                        else{
+//                            Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+//                            errorToast.show();
+//                        }
+//                        length=delay;
+//                    }
+//                    playAudioMessage(message, count+1);
+//                }, 2500);
+//            }
+//                if(character=='.'){
+//                                delay=beep_short.getDuration()+250;
+//                                beep_short.start();
+////                    playAudio(beep_short, soundID_short);
+//
+//                }else if(character=='-'){
+////                                delay=beep_long.getDuration()+250;
+////                                beep_long.start();
+//                    playAudio(beep_long, soundID_long);
+//
+//                }else if(character=='/'){
+////                                delay=beep_delay.getDuration()+250;
+//                    playAudio(beep_delay, soundID_delay);
+//                }
+//                else{
+//                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+//                    errorToast.show();
+//                }
+//                playAudio(beep_delay, soundID_delay);
+//
+//            }
+
+//        }catch(Exception e){
+//            Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Audio!", Toast.LENGTH_SHORT);
+//            errorToast.show();
+//        }
+//    }
 
     public void sendAudioMessage(View view){
+//        setAudioVolume();
         setHash(morseToChar, charToMorse);
         EditText editText = (EditText) findViewById(R.id.edit_message_audio);
-        String message = editText.getText().toString();
-        System.out.println(message);
+        message_delay = editText.getText().toString();
+//        System.out.println(message);
         InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
         //startActivity(intent);
-        String encoded=encodeMorse(message, charToMorse);
-        try{
-            String[]words=encoded.split(" ");
-            for(String word:words){
-                playAudio(word);
-                //play delay
-            }
-        }catch(Exception e){
-            Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
-            errorToast.show();
-        }
+        final String encoded=encodeMorse(message_delay, charToMorse);
+            new Thread(new Runnable(){
+                int delay=0;
+                @Override
+                public void run(){
+                    try{
+                        String[]words=encoded.split(" ");
+                        for(String word:words){
+                            delay=playAudioMessage(word);
+                            Thread.sleep(delay);
+                        }
+                    }catch(Exception e){
+                        Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
+                        errorToast.show();
+                    }
+                }
+
+            }).start();
+
+
     }
+    //flash functions
 
     public void flashON(){
         camera = Camera.open();
