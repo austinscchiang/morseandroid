@@ -38,10 +38,13 @@
                     android:text="@string/button_send" />
         </LinearLayout>
         <TextView
+                android:textSize="25sp"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:layout_width="fill_parent"
                 android:layout_height="52dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Frequency for light"
+                android:text="LIGHT FREQUENCY"
                 android:id="@+id/textview_light"/>
         <LinearLayout
                 android:id="@+id/boxthree_light"
@@ -50,9 +53,11 @@
                 android:orientation="horizontal" >
 
             <SeekBar
+                    android:id="@+id/seekbar_light"
                     android:layout_width="185dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/seekBar_light" android:layout_weight="0.98"/>
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.98"
+                    android:max="9"/>
         </LinearLayout>
 
 

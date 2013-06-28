@@ -13,9 +13,7 @@
   </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
-      <GlobalState>
-        <option name="visible" value="false" />
-      </GlobalState>
+      <GlobalState />
     </option>
   </component>
   <component name="AndroidLayouts">
@@ -46,31 +44,36 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="delay" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="sound" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67f65232-1dc1-46af-a70e-4c2c557a3ab7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/short_beep.mp3" afterPath="$PROJECT_DIR$/res/raw/short_beep.mp3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/fragment_section_audio.xml" afterPath="$PROJECT_DIR$/res/layout/fragment_section_audio.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml" afterPath="$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/fragment_section_light.xml" afterPath="$PROJECT_DIR$/res/layout/fragment_section_light.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/splash_screen.xml" afterPath="$PROJECT_DIR$/res/layout/splash_screen.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Morsecodeaustin.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372033930113" ignored="false" />
+    <file path="/Dummy.txt" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372259391461" ignored="false" />
     <file path="$USER_HOME$/Downloads/NavigationDrawer/AndroidManifest.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370727960484" ignored="false" />
     <file path="/fragment.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371525947480" ignored="false" />
     <file path="/strings.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371521037427" ignored="false" />
-    <file path="/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372048711333" ignored="false" />
+    <file path="/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372395348152" ignored="false" />
     <file path="/activity_main2.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370834340637" ignored="false" />
     <file path="$USER_HOME$/Downloads/NavigationDrawer/src/com/example/android/navigationdrawerexample/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370822633902" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371255566104" ignored="false" />
-    <file path="/splash_screen.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1370975955284" ignored="false" />
+    <file path="/splash_screen.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372282432158" ignored="false" />
     <file path="/activity_main.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371254339737" ignored="false" />
-    <file path="/fragment_section_audio.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371524954280" ignored="false" />
+    <file path="/fragment_section_audio.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372396276666" ignored="false" />
     <file path="$PROJECT_DIR$/../EffectiveNavigation/EffectiveNavigation/src/main/java/com/example/effectivenavigation/MainActivity.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371358092902" ignored="false" />
     <file path="$PROJECT_DIR$/../EffectiveNavigation/EffectiveNavigation/src/main/java/com/example/effectivenavigation/AndroidManifest.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371355731214" ignored="false" />
     <file path="/fragment_section_launchpad.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371356735228" ignored="false" />
-    <file path="/fragment_section_light.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1371524803900" ignored="false" />
+    <file path="/fragment_section_light.xml" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372301628160" ignored="false" />
+    <file path="/MorseFunction.java" changelist="67f65232-1dc1-46af-a70e-4c2c557a3ab7" time="1372382786882" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +88,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -121,7 +125,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -131,86 +134,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SplashScreen.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ac/austin/SplashScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="34" selection-start="689" selection-end="1081" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ac/austin/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="624" column="46" selection-start="23350" selection-end="23350" vertical-scroll-proportion="0.3050571">
+            <state line="685" column="52" selection-start="25999" selection-end="26086" vertical-scroll-proportion="-19.0">
               <folding>
-                <element signature="e#1882#1916#0" expanded="false" />
-                <element signature="e#2515#2534#0" expanded="true" />
-                <element signature="e#2609#2628#0" expanded="true" />
+                <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#5338#5426#0" expanded="false" />
-                <element signature="e#5899#5921#0" expanded="false" />
-                <element signature="method#onTabUnselected#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onTabReselected#0;class#MainActivity#0" expanded="false" />
-                <element signature="class#AppSectionsPagerAdapter#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#5120#5143#0" expanded="true" />
+                <element signature="e#7817#7836#0" expanded="false" />
                 <element signature="method#asciiRange#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#setHash#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#switchDecodeChar#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#decodeMorse#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#switchEncodeChar#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#encodeMorse#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#toggleButtonPressed#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#modeSelect#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#copyMessage#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#sendMessage#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onCreateView#0;class#LaunchpadSectionFragment#0;class#MainActivity#0" expanded="false" />
-                <element signature="class#LightSectionFragment#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#17503#17794#0" expanded="true" />
+                <element signature="e#17755#17756#0" expanded="true" />
+                <element signature="e#17870#18163#0" expanded="true" />
+                <element signature="e#18124#18125#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_section_light.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_light.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="LightSectionFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ac/austin/LightSectionFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="50" selection-start="2295" selection-end="2295" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="11" column="0" selection-start="226" selection-end="564" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_section_audio.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="fragment_section_audio.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_audio.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="56" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="46" column="44" selection-start="1826" selection-end="1826" vertical-scroll-proportion="0.5906433">
+              <folding>
+                <element signature="e#1315#1337#0" expanded="true" />
+                <element signature="e#1563#1584#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_section_launchpad.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml">
           <provider editor-type-id="android-designer">
             <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="25" selection-start="2840" selection-end="2840" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="125" selection-start="2014" selection-end="2014" vertical-scroll-proportion="0.0">
+            <state line="15" column="125" selection-start="2014" selection-end="2014" vertical-scroll-proportion="-9.0">
               <folding />
             </state>
           </provider>
@@ -219,7 +198,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="65" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
+            <state line="21" column="0" selection-start="896" selection-end="896" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -251,15 +230,19 @@
         <option value="$PROJECT_DIR$/res/layout/activity_main2.xml" />
         <option value="$PROJECT_DIR$/assets/morsesource.txt" />
         <option value="$PROJECT_DIR$/res/layout/test.xml" />
-        <option value="$PROJECT_DIR$/res/layout/splash_screen.xml" />
         <option value="$PROJECT_DIR$/src/com/ac/austin/CollectionDemoActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/fragment_section_light.xml" />
-        <option value="$PROJECT_DIR$/res/layout/fragment_section_audio.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/res/layout/splash_screen.xml" />
+        <option value="$PROJECT_DIR$/res/layout/fragment_section_light.xml" />
+        <option value="$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml" />
+        <option value="$PROJECT_DIR$/src/com/ac/austin/LightSectionFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/ac/austin/LaunchpadSectionFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/ac/austin/MorseFunction.java" />
+        <option value="$PROJECT_DIR$/src/com/ac/austin/AudioSectionFragment.java" />
         <option value="$PROJECT_DIR$/src/com/ac/austin/MainActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/fragment_section_audio.xml" />
       </list>
     </option>
   </component>
@@ -295,7 +278,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -360,48 +342,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="morseandroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="morseandroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="morseandroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="morseandroid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -417,8 +364,8 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -612,40 +559,41 @@
       <workItem from="1371242144283" duration="2370000" />
       <workItem from="1371254143050" duration="25696000" />
       <workItem from="1371524110731" duration="25744000" />
-      <workItem from="1372033922035" duration="7296000" />
+      <workItem from="1372033922035" duration="12857000" />
+      <workItem from="1372259381235" duration="37477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99335000" />
+    <option name="totallyTimeSpent" value="142373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20416386" sideWeight="0.7629428" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.038280725" sideWeight="0.7629428" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32817754" sideWeight="0.8201635" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12549537" sideWeight="0.5177972" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24306473" sideWeight="0.48623237" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4015852" sideWeight="0.6252518" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23433243" sideWeight="0.48623237" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33242506" sideWeight="0.6252518" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09402283" sideWeight="0.8441215" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15587847" sideWeight="0.48220283" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.059771657" sideWeight="0.85601056" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="top" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.400807" sideWeight="0.8201635" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17983651" sideWeight="0.48220283" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.051109616" sideWeight="0.85601056" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975152" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13738441" sideWeight="0.49930653" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -661,18 +609,18 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12549537" sideWeight="0.5177972" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24834874" sideWeight="0.48623237" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49405548" sideWeight="0.6252518" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14036267" sideWeight="0.85601056" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14398943" sideWeight="0.48220283" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -736,50 +684,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="65" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="25" selection-start="2840" selection-end="2840" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="125" selection-start="2014" selection-end="2014" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="59" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/morsesource.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="5" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/splash_screen.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="13" column="113" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/morseandroid.iml">
@@ -787,99 +694,135 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="125" selection-start="2014" selection-end="2014" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="299" selection-end="299" vertical-scroll-proportion="0.10489511">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_audio.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="56" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_light.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="50" selection-start="2295" selection-end="2295" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="25" selection-start="2840" selection-end="2840" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/SplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="34" selection-start="689" selection-end="1081" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/android/media/SoundPool.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="13" selection-start="1537" selection-end="1537" vertical-scroll-proportion="0.8042414" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_light.xml">
+      <provider editor-type-id="text-editor">
+        <state line="40" column="36" selection-start="1652" selection-end="1652" vertical-scroll-proportion="-8.76">
+          <folding>
+            <element signature="e#1301#1323#0" expanded="true" />
+            <element signature="e#1549#1570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="41" selection-start="886" selection-end="886" vertical-scroll-proportion="0.51282054">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/splash_screen.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="40" selection-start="232" selection-end="267" vertical-scroll-proportion="0.124740124">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/SplashScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="71" selection-start="655" selection-end="655" vertical-scroll-proportion="0.34749034">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_launchpad.xml">
+      <provider editor-type-id="text-editor">
+        <state line="87" column="47" selection-start="4010" selection-end="4010" vertical-scroll-proportion="-12.8">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/LaunchpadSectionFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="1" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/AudioSectionFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="2" selection-start="234" selection-end="234" vertical-scroll-proportion="0.20654045">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="65" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
+        <state line="21" column="0" selection-start="896" selection-end="896" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="125" selection-start="2014" selection-end="2014" vertical-scroll-proportion="-9.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ac/austin/LightSectionFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="226" selection-end="564" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ac/austin/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="624" column="46" selection-start="23350" selection-end="23350" vertical-scroll-proportion="0.3050571">
+        <state line="685" column="52" selection-start="25999" selection-end="26086" vertical-scroll-proportion="-19.0">
           <folding>
-            <element signature="e#1882#1916#0" expanded="false" />
-            <element signature="e#2515#2534#0" expanded="true" />
-            <element signature="e#2609#2628#0" expanded="true" />
+            <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#5338#5426#0" expanded="false" />
-            <element signature="e#5899#5921#0" expanded="false" />
-            <element signature="method#onTabUnselected#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onTabReselected#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#AppSectionsPagerAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#5120#5143#0" expanded="true" />
+            <element signature="e#7817#7836#0" expanded="false" />
             <element signature="method#asciiRange#0;class#MainActivity#0" expanded="false" />
             <element signature="method#setHash#0;class#MainActivity#0" expanded="false" />
             <element signature="method#switchDecodeChar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#decodeMorse#0;class#MainActivity#0" expanded="false" />
             <element signature="method#switchEncodeChar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#encodeMorse#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#toggleButtonPressed#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#modeSelect#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#copyMessage#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#sendMessage#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateView#0;class#LaunchpadSectionFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#LightSectionFragment#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#17503#17794#0" expanded="true" />
+            <element signature="e#17755#17756#0" expanded="true" />
+            <element signature="e#17870#18163#0" expanded="true" />
+            <element signature="e#18124#18125#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fragment_section_audio.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="44" selection-start="1826" selection-end="1826" vertical-scroll-proportion="0.5906433">
+          <folding>
+            <element signature="e#1315#1337#0" expanded="true" />
+            <element signature="e#1563#1584#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>

@@ -34,11 +34,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.ImageButton;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+import android.widget.*;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnCompletionListener{
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
@@ -47,94 +43,66 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     private ActionBarDrawerToggle mDrawerToggle;
     private ViewPager mViewPager;
     public String message_delay;
-    public char character_delay;
-    public Handler mHandler=new Handler();
-    boolean played=false;
-    int delay=0;
-//    private SoundPool beep_long;
-//    private SoundPool beep_short;
-//    private SoundPool beep_delay;
-//    private int soundID_long;
-//    private int soundID_short;
-//
-//    private int soundID_delay;
-//    boolean loaded=false;
-//    private float volume =1;
-
-
-
-
-
+    Thread audioThread=null;
+    Thread audioSuperThread=null;
+    Thread lightThread=null;
+    Thread lightSuperThread=null;
+    boolean stopThread;
+    boolean aliveThread;
+    ImageView audioOnIcon;
+    ImageView lightOnIcon;
+//    ImageView audioOffIcon;
     MediaPlayer beep_long;
     MediaPlayer beep_short;
     MediaPlayer beep_delay;
-//    MediaPlayer beep_short = MediaPlayer.create(this, R.raw.short_beep);
-//    MediaPlayer delay = MediaPlayer.create(this, R.raw.delay);
-
-
-    Camera camera;
-
-
-
+    Camera camera=null;
+    LaunchpadSectionFragment launchFrag;
+    AudioSectionFragment audioFrag;
+    LightSectionFragment lightFrag;
 
     public static String MODE = "ENCODE";
     public static HashMap <Character, String> charToMorse = new HashMap<Character, String>();
     public static HashMap <String, Character> morseToChar = new HashMap<String, Character>();
 
+    @Override
+    public void onDestroy() {
+        stopThread=true;
+        Log.e("Light ","Destroy"+stopThread);
+        super.onDestroy();
+    }
+    @Override
+    public void onResume() {
+        stopThread=false;
+        Log.e("Light ","Resume"+stopThread);
+        super.onResume();
+    }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
+        stopThread=true;
+        Log.e("Light ","Stop"+stopThread);
         super.onStop();
-        if (camera != null) {
-            camera.stopPreview();
-            camera.release();
-        }
+    }
+
+    @Override
+    public void onPause() {
+        stopThread=true;
+        Log.e("Light ","Pause"+stopThread);
+        super.onPause();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //snippet for soundpool
-
+        stopThread=false;
+        aliveThread=false;
 //        Set the hardware buttons to control the music
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        // Load the sound
-//        beep_long = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-//        beep_long.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-//            @Override
-//            public void onLoadComplete(SoundPool soundPool, int sampleId,
-//                                       int status) {
-//                loaded = true;
-//                Log.e("initial", "loaded");
-//            }
-//        });
-//        beep_short = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-//        beep_short.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-//            @Override
-//            public void onLoadComplete(SoundPool soundPool, int sampleId,
-//                                       int status) {
-//                loaded = true;
-//                Log.e("initial", "loaded");
-//            }
-//        });
-//        beep_delay = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-//        beep_delay.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-//            @Override
-//            public void onLoadComplete(SoundPool soundPool, int sampleId,
-//                                       int status) {
-//                loaded = true;
-//                Log.e("initial", "loaded");
-//            }
-//        });
-//
-//        soundID_long = beep_long.load(this, R.raw.long_beep, 1);
-//        soundID_short = beep_short.load(this, R.raw.short_beep, 1);
-//        soundID_delay = beep_delay.load(this, R.raw.delay, 1);
 
-
-
+        launchFrag=new LaunchpadSectionFragment();
+        audioFrag=new AudioSectionFragment();
+        lightFrag=new LightSectionFragment();
 
 
          //snippet for mediaplayer
@@ -143,8 +111,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         beep_delay = MediaPlayer.create(MainActivity.this, R.raw.delay);
 
 
-        //snippet for flashlight
-        Context context = this;
+
+                Context context = this;
         PackageManager pm = context.getPackageManager();
 
         // if device support camera?
@@ -155,6 +123,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             return;
         }
 
+
+
+//        audioOnIcon=(ImageView)audioFrag.getView().findViewById(R.id.sound_on_icon);
+//        audioOffIcon=(ImageView)audioFrag.getView().findViewById(R.id.sound_off_icon);
 
 
 
@@ -174,31 +146,31 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 
 //        DrawerStuffs
-//        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-//        mDrawerText = (TextView) findViewById(R.id.left_drawer);
-//        mDrawerText.setText(R.string.drawer_content);
-//        mDrawerText.setTextColor(Color.WHITE);
-//        mDrawerText.setTextSize(20);
-//        mDrawerText.setMovementMethod(new ScrollingMovementMethod());
-//        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-//                R.drawable.mcticon, R.string.drawer_open, R.string.drawer_close) {
-//
-//            /** Called when a drawer has settled in a completely closed state. */
-//            public void onDrawerClosed(View view) {
-//                getActionBar().setTitle("Morse Code Translator");
-//                invalidateOptionsMenu();
-//            }
-//
-//            /** Called when a drawer has settled in a completely open state. */
-//            public void onDrawerOpened(View drawerView) {
-//                getActionBar().setTitle("Morse Code Conversion Sheet");
-//                invalidateOptionsMenu();
-//            }
-//        };
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        mDrawerText = (TextView) findViewById(R.id.left_drawer);
+        mDrawerText.setText(R.string.drawer_content);
+        mDrawerText.setTextColor(Color.WHITE);
+        mDrawerText.setTextSize(20);
+        mDrawerText.setMovementMethod(new ScrollingMovementMethod());
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.drawable.mcticon, R.string.drawer_open, R.string.drawer_close) {
 
-//        // Set the drawer toggle as the DrawerListener
-//        mDrawerLayout.setDrawerListener(mDrawerToggle);
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle("Morse Code Translator");
+                invalidateOptionsMenu();
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle("Morse Code Conversion Sheet");
+                invalidateOptionsMenu();
+            }
+        };
+
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         // Set up the ViewPager, attaching the adapter and setting up a listener for when the
         // user swipes between sections.
@@ -240,9 +212,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onCompletion(MediaPlayer mp){
-
-
-
     }
 
     //more drawer stuff
@@ -260,7 +229,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 //        return super.onPrepareOptionsMenu(menu);
 //    }
 
-    public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
+    public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
         public AppSectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -272,14 +241,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 case 0:
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
-                    return new LaunchpadSectionFragment();
+                    return launchFrag;
                 case 1:
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
-                    return new AudioSectionFragment();
+                    return audioFrag;
 
                 default:
-                    return new LightSectionFragment();
+                    return lightFrag;
             }
         }
 
@@ -358,9 +327,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
         return decoded;
     }
-
-
-
 
 
     private String switchEncodeChar(char symbol, HashMap<Character, String> hm){
@@ -464,226 +430,204 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             output.setText(decodeMorse(message, morseToChar));
         }
         output.setVisibility(View.VISIBLE);
+
     }
-    //audio function
 
-//    public void setAudioVolume(){
-//        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-//        float actualVolume = (float) audioManager
-//                .getStreamVolume(AudioManager.STREAM_MUSIC);
-//        float maxVolume = (float) audioManager
-//                .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-//        volume = actualVolume / maxVolume;
-//        Log.e("Volume", ""+volume);
-//    }
-//    public void playAudio(SoundPool sp, int id){
-//            sp.play(id, volume, volume, 1, 0, 1f);
-//            Log.e("Test", "Played sound "+id);
-//
-//
-//    }
 
-    int playAudioMessage(final String message){
+    public void soundImageOn(){
+        audioOnIcon.setVisibility(View.VISIBLE);
+    }
+    public void soundImageOff(){
+        audioOnIcon.setVisibility(View.INVISIBLE);
+    }
+
+
+    public int playAudioMessage(final String message){
         final int[] delay_counter = new int[1];
-        Runnable r=new Runnable(){
-            int delay=0;
-            @Override
-            public void run(){
-                try{
-                    delay_counter[0]=0;
-                    int count=0;
-                    char[] characters=message.toCharArray();
-                        for (char character:characters){
-                            count++;
-                        if(character=='.'){
-                            delay=beep_short.getDuration()+250;
-                            beep_short.start();
-            //                                  playAudio(beep_short, soundID_short);
-
-                        }else if(character=='-'){
-                                    delay=beep_long.getDuration()+250;
-                                    beep_long.start();
-            //                                playAudio(beep_long, soundID_long);
-
-                        }else if(character=='/'){
-                            delay=beep_delay.getDuration()+250;
-                            beep_delay.start();
-            //                                playAudio(beep_delay, soundID_delay);
-                        }else{
-                            Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
-                            errorToast.show();
-                        }
-                        Thread.sleep(delay);
-                        delay_counter[0]+=delay-250;
-                        Log.e("delay"+message+count, ""+delay_counter[0]);
-                    }
-                }catch(Exception e){
-                    Toast errorToast = Toast.makeText(getApplicationContext(), "goofed", Toast.LENGTH_SHORT);
-                    errorToast.show();
-
-                }
-            }
-        };
-        Thread mThread=new Thread(r);
-        mThread.start();
-        try{
-            mThread.join();
-        }catch(Exception e){
-            Toast errorToast = Toast.makeText(getApplicationContext(), "can't join Thread", Toast.LENGTH_SHORT);
-            errorToast.show();
-
-        }
-
-        return delay_counter[0];
-    }
-//        try{
-//            final Runnable mRunnable=new Runnable(){
-//                public void run(){
-//
-//                }
-//            };
-//            if (count<=message.length()){
-//                final char character=message.charAt(count);
-//                Handler handler=new Handler();
-//                handler.postDelayed(new Runnable(){
-//                    int length;
-//                    int delay=0;
-//                    @Override
-//                    public void run() {
-//                        if(played)
-//
-//                        if(character=='.'){
-//                            delay=beep_short.getDuration()+250;
-//                            beep_short.start();
-//    //                                  playAudio(beep_short, soundID_short);
-//
-//                        }else if(character=='-'){
-//                            delay=beep_long.getDuration()+250;
-//                            beep_long.start();
-//    //                                playAudio(beep_long, soundID_long);
-//
-//                        }else if(character=='/'){
-//                            delay=beep_delay.getDuration()+250;
-//                            beep_delay.start();
-//    //                                playAudio(beep_delay, soundID_delay);
-//                        }
-//                        else{
-//                            Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
-//                            errorToast.show();
-//                        }
-//                        length=delay;
-//                    }
-//                    playAudioMessage(message, count+1);
-//                }, 2500);
-//            }
-//                if(character=='.'){
-//                                delay=beep_short.getDuration()+250;
-//                                beep_short.start();
-////                    playAudio(beep_short, soundID_short);
-//
-//                }else if(character=='-'){
-////                                delay=beep_long.getDuration()+250;
-////                                beep_long.start();
-//                    playAudio(beep_long, soundID_long);
-//
-//                }else if(character=='/'){
-////                                delay=beep_delay.getDuration()+250;
-//                    playAudio(beep_delay, soundID_delay);
-//                }
-//                else{
-//                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
-//                    errorToast.show();
-//                }
-//                playAudio(beep_delay, soundID_delay);
-//
-//            }
-
-//        }catch(Exception e){
-//            Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Audio!", Toast.LENGTH_SHORT);
-//            errorToast.show();
-//        }
-//    }
-
-    public void sendAudioMessage(View view){
-//        setAudioVolume();
-        setHash(morseToChar, charToMorse);
-        EditText editText = (EditText) findViewById(R.id.edit_message_audio);
-        message_delay = editText.getText().toString();
-//        System.out.println(message);
-        InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
-        //startActivity(intent);
-        final String encoded=encodeMorse(message_delay, charToMorse);
-            new Thread(new Runnable(){
+            Runnable r=new Runnable(){
                 int delay=0;
                 @Override
                 public void run(){
+                    if (!stopThread){
+                        try{
+                            delay_counter[0]=0;
+//                            audioFrag.setImageView();
+//                            soundImageOn();
+                            Log.e("SoundOn",""+audioOnIcon.getDrawable());
+//                            Log.e("SoundOff", "" + audioOffIcon.getDrawable());
+                            int count=0;
+                            char[] characters=message.toCharArray();
+                                for (char character:characters){
+                                    count++;
+                                if(character=='.'){
+                                    delay=beep_short.getDuration()+250;
+                                    beep_short.start();
+
+                                }else if(character=='-'){
+                                            delay=beep_long.getDuration()+250;
+                                            beep_long.start();
+
+                                }else if(character=='/'){
+                                    delay=beep_delay.getDuration()+250;
+                                    beep_delay.start();
+                                }else{
+                                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+                                    errorToast.show();
+                                }
+                                    audioOnIcon.getHandler().post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            audioOnIcon.setVisibility(View.VISIBLE);
+                                        }
+                                    });
+                                    audioOnIcon.getHandler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            audioOnIcon.setVisibility(View.INVISIBLE);
+                                        }
+                                    }, delay-50);
+                                    Thread.sleep(delay);
+
+                                delay_counter[0]+=delay-250;
+                                Log.e("delay"+message+count, ""+delay_counter[0]);
+//                                soundImageOff();
+                                }
+                        }catch(Exception e){
+                            Toast errorToast = Toast.makeText(getApplicationContext(), "goofed", Toast.LENGTH_SHORT);
+                            errorToast.show();
+
+                        }
+                    }
+                }
+            };
+            audioThread =new Thread(r);
+            audioThread.start();
+            try{
+                audioThread.join();
+            }catch(Exception e){
+                Toast errorToast = Toast.makeText(getApplicationContext(), "can't join Thread", Toast.LENGTH_SHORT);
+                errorToast.show();
+
+            }
+            return delay_counter[0];
+    }
+//
+
+    public void sendAudioMessage(View view){
+        audioOnIcon.setVisibility(View.VISIBLE);
+        setHash(morseToChar, charToMorse);
+        EditText editText = (EditText) findViewById(R.id.edit_message_audio);
+        message_delay = editText.getText().toString();
+        InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
+        final String encoded=encodeMorse(message_delay, charToMorse);
+            Runnable r=new Runnable(){
+                int delay=0;
+                @Override
+                public void run(){
+                    aliveThread=true;
                     try{
                         String[]words=encoded.split(" ");
                         for(String word:words){
+                            if(!stopThread){
                             delay=playAudioMessage(word);
                             Thread.sleep(delay);
+                            }
                         }
                     }catch(Exception e){
                         Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
                         errorToast.show();
                     }
+                    aliveThread=false;
+
                 }
 
-            }).start();
+            };
+            audioSuperThread=new Thread(r);
+            if(!stopThread && !aliveThread){
+                audioSuperThread.start();
+
+            }
 
 
     }
     //flash functions
 
     public void flashON(){
+        if(camera==null){
         camera = Camera.open();
         Parameters p = camera.getParameters();
         p.setFlashMode(Parameters.FLASH_MODE_TORCH);
         camera.setParameters(p);
         camera.startPreview();
+        }
 
     }
 
     public void flashOFF(){
+        if(camera!=null){
         camera.stopPreview();
         camera.release();
-    }
-    public void flashChar(boolean length){
-
-            flashON();
-            try {
-                if(length==true)  Thread.sleep(100);
-                else   Thread.sleep(400);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        flashOFF();
+        camera=null;
+        }
     }
 
-    public void stringToLight(String message){
-
+    public int stringToLight(final String message){
         try{
-            char[] characters=message.toCharArray();
-            for (char character:characters){
-                if(character=='.'){
-                    flashChar(true);
+            final int[] delay_counter = new int[1];
+            Runnable r=new Runnable(){
+                SeekBar frequencyBar=(SeekBar)findViewById(R.id.seekbar_light);
+                int frequencyFraction=frequencyBar.getProgress()+1;
+                int delay=0;
+                @Override
+                public void run(){
+                    if(!stopThread){
+                        Log.e("Light","Inside"+stopThread);
+                        try{
+                            delay_counter[0]=0;
+                            int count=0;
+                            char[] characters=message.toCharArray();
+                            for (char character:characters){
+                                count++;
+                                if(character=='.'){
+                                    flashON();
+                                    delay=200;
 
-                }else if(character=='-'){
-                    flashChar(false);
+                                }else if(character=='-'){
+                                    flashON();
+                                    delay=900;
 
-                }else{
-                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
-                    errorToast.show();
+                                }else if(character=='/'){
+                                    flashOFF();
+                                    delay=900;
+                                }else{
+                                    Toast errorToast = Toast.makeText(getApplicationContext(), ""+character, Toast.LENGTH_SHORT);
+                                    errorToast.show();
+                                }
+                                delay=delay*frequencyFraction/10;
+                                Thread.sleep(delay);
+                                delay_counter[0]+=delay+400*frequencyFraction/10;
+                                flashOFF();
+                                Thread.sleep(400*frequencyFraction/10);
+                                Log.e("delay"+message+count, ""+delay_counter[0]);
+                            }
+                        }catch(Exception e){
+                            Toast errorToast = Toast.makeText(getApplicationContext(), "goofed", Toast.LENGTH_SHORT);
+                            errorToast.show();
+                        }
+                    }
                 }
-                Thread.sleep(250);
-            }
-            //play delay
+            };
+            lightThread =new Thread(r);
+            lightThread.start();
+            lightThread.join();
+            return delay_counter[0];
 
         }catch(Exception e){
             Toast errorToast = Toast.makeText(getApplicationContext(), "Cannot Convert to Light!", Toast.LENGTH_SHORT);
             errorToast.show();
             flashOFF();
+            return 0;
         }
     }
 
@@ -694,69 +638,55 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         System.out.println(message);
         InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
-        //startActivity(intent);
-        String encoded=encodeMorse(message, charToMorse);
-        try{
-            String[]words=encoded.split(" ");
-            for(String word:words){
-                stringToLight(word);
-                Thread.sleep(400);
 
-                //play delay
-            }
-        }catch(Exception e){
-            Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
-            errorToast.show();
+        final String encoded=encodeMorse(message, charToMorse);
+            Runnable r =new Runnable(){
+                int delay=0;
+                @Override
+                public void run(){
+                    aliveThread=true;
+                    try{
+                        String[]words=encoded.split(" ");
+                        for(String word:words){
+                            if(!stopThread){
+                                Log.e("Light",""+stopThread);
+                            delay=stringToLight(word);
+                            Thread.sleep(delay);
+                            }
+                        }
+                    }catch(Exception e){
+                        Toast errorToast = Toast.makeText(getApplicationContext(), "wut", Toast.LENGTH_SHORT);
+                        errorToast.show();
+                    }
+                    aliveThread=false;
+                }
+
+            };
+        lightSuperThread=new Thread(r);
+        if(!stopThread &&!aliveThread){
+            lightSuperThread.start();
         }
     }
-    //End of onCreate
-
-
-
-
-
-
-    /**
-     * A fragment that launches other parts of the demo application.
-     */
-    public static class LaunchpadSectionFragment extends Fragment {
-        //IMPLEMENT THIS SHIT
+    public class AudioSectionFragment extends Fragment {
+        View rootAudioView;
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_section_launchpad, container, false);
-            ToggleButton buttonPressed=(ToggleButton)rootView.findViewById(R.id.encodeButton);
-            buttonPressed.setChecked(true);
-            return rootView;
+            rootAudioView = inflater.inflate(R.layout.fragment_section_audio, container, false);
+            audioOnIcon=((ImageView)rootAudioView.findViewById(android.R.id.icon));
+            audioOnIcon.setVisibility(View.INVISIBLE);
+            return rootAudioView;
         }
-
-
-
-
-
     }
-    public static class AudioSectionFragment extends Fragment{
+    public class LightSectionFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_section_audio, container, false);
-            return rootView;
+            View rootLightView = inflater.inflate(R.layout.fragment_section_light, container, false);
+//            lightOnIcon=((ImageView)rootLightView.findViewById(android.R.id.icon));
+//            lightOnIcon.setVisibility(View.INVISIBLE);
+            return rootLightView;
         }
 
     }
-
-    public static class LightSectionFragment extends Fragment{
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_section_light, container, false);
-
-            return rootView;
-        }
-
-    }
-
-
-
-
 }
